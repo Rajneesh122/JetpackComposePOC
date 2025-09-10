@@ -3,4 +3,9 @@
     <string name="search">Search</string>
     <string name="followers">Followers</string>
     <string name="repos">Repos</string>
+    <string name="github_username">GitHub Username</string>
+    <string name="failed_to_load_repositories">Failed to load repositories.</string>
+    <string name="Retry">Retry</string>
+    <string name="user_not_found">User not found</string>
+    <string name="no_data_found">No data found!</string>
 </resources>

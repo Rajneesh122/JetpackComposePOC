@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.dagger.hilt.android")
+    kotlin("kapt")
 }
 
 android {
@@ -37,13 +39,9 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
-    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -62,4 +60,28 @@ dependencies {
 
     // Navigation
     implementation(libs.androidx.navigation.compose)
+
+    // Retrofit & OkHttp
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttpIntercepter)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Hilt DI
+    implementation(libs.hilt.android)
+    kapt("com.google.dagger:hilt-compiler:2.50")
+
+
+    // Paging 3
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.runtime)
+
+    // Coil Image Loading
+    implementation(libs.coil.compose)
+
+    //Swipe Refresh
+    implementation(libs.accompanist.swiperefresh)
 }
