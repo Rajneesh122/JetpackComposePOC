@@ -1,4 +1,5 @@
 package com.jetpack.composepoc.data.networking.di
+import com.jetpack.composepoc.BuildConfig
 import com.jetpack.composepoc.data.services.GitHubApiService
 import dagger.Module
 import dagger.Provides
@@ -58,7 +59,7 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
