@@ -33,3 +33,13 @@ jobs:
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Notify Teams
+        env:
+          WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          BRANCH_NAME: dev
+          STATUS: ${{ job.status }}
+          run: |
+            curl -H "Content-Type: application/json" \
+                 -d '{"text": "🚀 New APK build is ready for dev branch!"}' \
+                 $WEBHOOK_URL
