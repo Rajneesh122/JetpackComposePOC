@@ -37,9 +37,10 @@ jobs:
       - name: Notify Teams
         env:
           WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          BRANCH_NAME: dev
+          BRANCH_NAME: ${{ github.ref_name }}
           STATUS: ${{ job.status }}
-          run: |
-            curl -H "Content-Type: application/json" \
-                 -d '{"text": "🚀 New APK build is ready for dev branch!"}' \
-                 $WEBHOOK_URL
+          APK_LINK: "https://example.com/your-app.apk"
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d "{\"text\": \"🚀 **New APK Build**\n- Branch: $BRANCH_NAME\n- Status: $STATUS\n- [Download APK]($APK_LINK)\"}" \
+               $WEBHOOK_URL
